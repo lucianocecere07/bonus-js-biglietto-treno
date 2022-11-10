@@ -1,6 +1,6 @@
 let Totale = document.getElementById("totale");
 
-Totale.addEventListener('click', function(){
+Totale.addEventListener('click', function () {
 
     let km = document.getElementById("input-km").value;
     let eta = document.getElementById("input-eta").value;
@@ -11,7 +11,17 @@ Totale.addEventListener('click', function(){
     let scontoMinore = prezzo * 20 / 100
     let scontoOver = prezzo * 40 / 100
 
-    document.getElementById("totaleSconto").innerHTML = prezzoDecimali;
+    document.getElementById("totaleSconto").innerHTML = prezzoDecimali + " € ";
+
+    if (eta < 18) {
+        minore = prezzo - scontoMinore
+        Decimali = minore.toFixed(2)
+    } else if (eta >= 65) {
+        over = prezzo - scontoOver
+        Decimali = over.toFixed(2)
+    } else {
+        Decimali = (prezzoDecimali - 0).toFixed(2)
+    }
 
     console.log(
         `
@@ -21,18 +31,7 @@ Totale.addEventListener('click', function(){
         ------Prezzo del biglietto------
             Prezzo pieno: ${prezzoDecimali} €
         ------Totale (con sconto dove disponibile)------
+            Totale (con sconto): ${Decimali} €
         `
     );
-
-    if(eta < 18){
-        minore = prezzo - scontoMinore
-        minoreDecimali = minore.toFixed(2)
-        console.log ("Totale (sconto minorenne): " + minoreDecimali + " €");
-    } else if(eta >= 65){
-        over = prezzo - scontoOver
-        overDecimali = over.toFixed(2)
-        console.log ("Totale (sconto over 65): " + overDecimali + " €");
-    } else{
-        console.log ("Totale: " + prezzoDecimali + " €");
-    }
 });
