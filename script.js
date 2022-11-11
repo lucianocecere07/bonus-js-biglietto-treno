@@ -6,7 +6,7 @@ totale.addEventListener('click', function () {
     let eta = document.getElementById("input-eta").value;
 
     let prezzo = km * 0.21;
-    let prezzoDecimali = parseFloat(prezzo.toFixed(2));
+    let prezzoDecimali = prezzo.toFixed(2);
 
     let scontoMinore = prezzo * 20 / 100;
     let scontoOver = prezzo * 40 / 100;
@@ -15,12 +15,12 @@ totale.addEventListener('click', function () {
 
     if (eta < 18) {
         minore = prezzo - scontoMinore;
-        decimali = parseFloat(minore.toFixed(2));
+        decimali = minore.toFixed(2);
         document.getElementById("totaleSconto").innerHTML = decimali + " € ";
 
     } else if (eta >= 65) {
         over = prezzo - scontoOver;
-        decimali = parseFloat(over.toFixed(2));
+        decimali = over.toFixed(2);
         document.getElementById("totaleSconto").innerHTML = decimali + " € ";
     } else {
         decimali = prezzoDecimali;
